@@ -5,7 +5,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Tabs } from './src/screens/mainTabs';
-
+import { ArticleDetailsScreen } from './src/screens/ArticleDetailsScreen';
 function App() {
   useEffect(() => EStyleSheet.build())
 
@@ -21,6 +21,7 @@ function App() {
       }}>
       <stack.Navigator>
         <stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
+        <stack.Screen name="Article Details" component={ArticleDetailsScreen} options={{ headerShown: true }} />
       </stack.Navigator>
     </NavigationContainer>
   );

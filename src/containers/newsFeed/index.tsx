@@ -18,11 +18,16 @@ export function NewsFeed(props: INewsFeedProps) {
             setNews(res)
         });
     }, [])
+    const viewArticleDetails = (article: IArticle) => {
+        props.navigation.navigate('Article Details', {
+            article: article,
+        });
+    }
     const renderList = () => {
         return <FlatList
             data={news}
             renderItem={(item: any) => {
-                return <NewsArticle article={item.item} onPress={() => console.log(item.item)} />
+                return <NewsArticle article={item.item} onPress={() => viewArticleDetails(item.item)} />
             }}
             numColumns={1}
             scrollEnabled

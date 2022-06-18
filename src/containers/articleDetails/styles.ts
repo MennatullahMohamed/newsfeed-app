@@ -1,8 +1,6 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Dimensions } from 'react-native';
 import { COLORS } from "../../assets/styles/colors";
 
-const SCREEN_HEIGHT = Dimensions.get('window').height;
 export const styles = EStyleSheet.create({
     mainContainer: {
         flex: 1,

@@ -1,11 +1,9 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-export default function NewsFeedScreen() {
+import React from 'react';
+import { NewsFeed } from '../../containers/newsFeed';
+export default function NewsFeedScreen({ navigation }: { navigation: any }) {
     return (
-        <View>
-            <Text>
-                NewsFeedScreen
-            </Text>
-        </View>
+        <>
+            <NewsFeed navigation={navigation} />
+        </>
     )
 }

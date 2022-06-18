@@ -1,12 +1,7 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-export default function SettingsScreen() {
+import React from 'react';
+import { Settings } from '../../containers/settings';
+export default function SettingsScreen({ navigation }: { navigation: any }) {
     return (
-        <View>
-            <Text>
-
-                SettingsScreen
-            </Text>
-        </View>
+        <Settings navigation={navigation} />
     )
 }

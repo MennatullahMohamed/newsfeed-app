@@ -14,12 +14,11 @@ export default function TabBarButton(props: ITabBarButtonProps) {
     const focused = accessibilityState.selected;
 
     return <TouchableOpacity
-        style={{ width: '50%',padding:5 }}
+        style={{ width: '50%', padding: 10, backgroundColor: COLORS.dark_blue }}
         onPress={onPress}>
         <View
             style={{ alignItems: 'center' }}>
-            <Icon name={iconName} size={20} color={focused ? COLORS.dark_blue : COLORS.light_grey} />
-            <Text style={{ color: COLORS.dark_blue}}>{title}</Text>
+            <Icon name={iconName} size={22} color={focused ? COLORS.white : COLORS.grey} />
         </View>
     </TouchableOpacity>
 }

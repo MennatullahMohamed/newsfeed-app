@@ -11,7 +11,7 @@ export function Tabs() {
     const tabs = [
         {
             id: 1,
-            name: 'Newsfeed',
+            name: t('newsfeed'),
             title: t('newsfeed'),
             iconName: 'newspaper-o',
             component: NewsFeedScreen,
@@ -19,7 +19,7 @@ export function Tabs() {
         },
         {
             id: 2,
-            name: 'Settings',
+            name: t('settings'),
             title: t('settings'),
             iconName: 'gear',
             component: SettingsScreen,

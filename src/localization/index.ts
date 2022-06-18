@@ -5,13 +5,14 @@ import i18n, {
 } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as RNLocalize from 'react-native-localize';
 import 'moment/min/locales';
 import moment from 'moment';
 import en from './en';
+import ar from './ar'
 
 export const AVAILABLE_LANGUAGES = {
     en,
+    ar
 };
 const languageDetector: LanguageDetectorAsyncModule = {
     type: 'languageDetector',
@@ -38,7 +39,7 @@ const languageDetector: LanguageDetectorAsyncModule = {
             }
             try {
                 let parsedLanguage = JSON.parse(language)
-                let lng = parsedLanguage.code.toLowerCase();
+                let lng = parsedLanguage.toLowerCase();
                 callback(lng);
             } catch (e) {
                 callback('en');

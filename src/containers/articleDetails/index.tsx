@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, SafeAreaView, Image, ScrollView } from 'react-native'
+import React, { useEffect } from 'react'
+import { Text, SafeAreaView, Image, ScrollView } from 'react-native'
 import { IArticle } from '../../dtos/article';
-import { COLORS } from '../../assets/styles/colors';
-import NewsArticle from '../../components/newsArticle';
+import { useTranslation } from 'react-i18next';
+
 import { styles } from './styles';
 interface INewsFeedProps {
   navigation: any,
   article: IArticle
 }
 export function ArticleDetails(props: INewsFeedProps) {
+  const { t } = useTranslation();
   const { article } = props;
   useEffect(() => {
     console.log("article", props.article)
@@ -22,9 +23,9 @@ export function ArticleDetails(props: INewsFeedProps) {
           resizeMode="contain"
         />
         <Text style={styles.title}>{article.title}</Text>
-        <Text style={styles.details}><Text style={styles.headers}>Author: </Text>{article.author}</Text>
-        <Text style={styles.details}><Text style={styles.headers}>Published at: </Text>{article.publishedAt.split('T')[0]}</Text>
-        <Text style={styles.details}><Text style={styles.headers}>Source: </Text>{article.source.name}</Text>
+        <Text style={styles.details}><Text style={styles.headers}>{t("newsfeed:author")} </Text>{article.author}</Text>
+        <Text style={styles.details}><Text style={styles.headers}>{t("newsfeed:publishedAt")} </Text>{article.publishedAt.split('T')[0]}</Text>
+        <Text style={styles.details}><Text style={styles.headers}>{t("newsfeed:source")} </Text>{article.source.name}</Text>
         <Text style={styles.details}>{article.content}</Text>
       </ScrollView>
     </SafeAreaView>

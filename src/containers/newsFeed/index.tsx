@@ -6,10 +6,13 @@ import { COLORS } from '../../assets/styles/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import NewsArticle from '../../components/newsArticle';
 import { styles } from './styles';
+import { useTranslation } from 'react-i18next';
+
 interface INewsFeedProps {
     navigation: any,
 }
 export function NewsFeed(props: INewsFeedProps) {
+    const { t } = useTranslation();
     const [news, setNews] = useState<IArticle[]>([]);
     const [fetching, setFetching] = useState(false);
     const [searchText, setSearchText] = useState("");
@@ -31,7 +34,7 @@ export function NewsFeed(props: INewsFeedProps) {
                 style={{ width: '85%' }}
                 onSubmitEditing={(e: any) => setSearchText(e.nativeEvent.text)}
                 onChangeText={(text: string) => console.log("text", text)}
-                placeholder="Search..." />
+                placeholder={t("newsfeed:search")} />
             <Icon name="search" size={24} color={COLORS.light_grey} />
         </View>
     }
@@ -51,7 +54,7 @@ export function NewsFeed(props: INewsFeedProps) {
             ListHeaderComponent={renderSearch()}
             onEndReachedThreshold={2}
             contentContainerStyle={{ backgroundColor: COLORS.white, padding: 10 }}
-            ListEmptyComponent={(<Text>No Articles Found.</Text>)}
+            ListEmptyComponent={(<Text>{t("newsfeed:noArticle")}</Text>)}
             bounces={false}
             alwaysBounceHorizontal={false}
             alwaysBounceVertical={false}

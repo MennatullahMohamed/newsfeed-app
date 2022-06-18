@@ -4,13 +4,15 @@ import TabBarButton from '../../components/tabBarButton'
 import NewsFeedScreen from '../newsScreen';
 import SettingsScreen from '../settingsScreen';
 import { useTranslation } from 'react-i18next';
-
+import '../../localization';
 export function Tabs() {
+    const { t } = useTranslation();
+
     const tabs = [
         {
             id: 1,
             name: 'Newsfeed',
-            title: 'Newsfeed',
+            title: t('newsfeed'),
             iconName: 'newspaper-o',
             component: NewsFeedScreen,
             headerShown: true
@@ -18,7 +20,7 @@ export function Tabs() {
         {
             id: 2,
             name: 'Settings',
-            title:'Settings',
+            title: t('settings'),
             iconName: 'gear',
             component: SettingsScreen,
             headerShown: true

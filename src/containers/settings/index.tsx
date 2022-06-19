@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { View, TextInput, Text, SafeAreaView, FlatList, I18nManager, Switch } from 'react-native'
+import { View, Text, SafeAreaView, I18nManager, Switch } from 'react-native'
 import { useTranslation } from 'react-i18next';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { COLORS } from '../../assets/styles/colors';
 import RNRestart from "react-native-restart";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';

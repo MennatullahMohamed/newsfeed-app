@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from 'react'
-import { View, TextInput, Text, SafeAreaView, FlatList, I18nManager } from 'react-native'
+import { View, TextInput, Text, SafeAreaView, FlatList, I18nManager, Switch } from 'react-native'
 import { useTranslation } from 'react-i18next';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { COLORS } from '../../assets/styles/colors';
 import RNRestart from "react-native-restart";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useSelector, useDispatch } from 'react-redux';
+import { switchMode } from '../../redux/actions';
+import { styles } from './styles';
 
 interface ISettingsProps {
     navigation: any,
 }
 export function Settings(props: ISettingsProps) {
     const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const theme = useSelector((state: any) => state.theme);
     const [value, setValue] = useState('');
+    const [mode, setMode] = useState(theme.mode);
     const [open, setOpen] = useState(false);
     const [items, setItems] = useState([
         { label: 'English', value: 'en' },
@@ -25,8 +31,18 @@ export function Settings(props: ISettingsProps) {
             }
         })
     }, [])
+    const handleThemeChange = (value: boolean) => {
+        setMode(value);
+        if (value == true) {
+            dispatch(switchMode('dark'));
+            setMode(value)
+        }
+        else {
+            dispatch(switchMode('light'));
+        }
+
+    }
     const changeLang = (item: any) => {
-        console.log("changeLang", item)
         AsyncStorage.setItem('language', JSON.stringify(item.value), async () => {
             if (item.value.toLowerCase() == 'ar') {
                 await I18nManager.forceRTL(true);
@@ -40,9 +56,8 @@ export function Settings(props: ISettingsProps) {
             }
         });
     }
-    console.log("valueee", value)
     return (
-        <SafeAreaView style={{ height: '100%', backgroundColor: COLORS.white }}>
+        <SafeAreaView style={[{ height: '100%' }, theme.mode == 'dark' ? styles.darkBgColor : styles.lightBgColor]}>
             <DropDownPicker
                 open={open}
                 value={value}
@@ -55,6 +70,11 @@ export function Settings(props: ISettingsProps) {
                 setValue={setValue}
                 setItems={setItems}
             />
+            <View style={styles.switchContainer}>
+                <Text style={[styles.switchText, theme.mode == 'dark' ? styles.darkColor : styles.lightColor]}>{t('settings:darkMode')}</Text>
+                <Switch value={mode}
+                    onValueChange={(value: boolean) => handleThemeChange(value)} />
+            </View>
         </SafeAreaView>
     )
 }

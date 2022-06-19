@@ -30,6 +30,12 @@ export const styles = EStyleSheet.create({
     articleImage: {
         width: "100%",
         height: '15rem',
+    },
+    darkModeBgColor: {
+        backgroundColor: COLORS.dark_blue
+    },
+    darkModeColor: {
+        color: COLORS.white
     }
 
 });

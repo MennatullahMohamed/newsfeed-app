@@ -1,3 +1,4 @@
 export default {
-    selectLanguage: "Select Language"
+    selectLanguage: "Select Language",
+    darkMode: "Dark mode"
 }

@@ -16,5 +16,7 @@ run: npx react-native run-android
 to test deep linking on android
 run: npx uri-scheme open newsfeedapp://{articleIndexValue} --android
 
+Note: I couldn't make it work on iOS as I don't own a Mac machine and couldn't use the one at work.
+
 
 

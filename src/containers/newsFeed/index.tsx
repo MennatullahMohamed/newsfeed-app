@@ -19,12 +19,15 @@ export function NewsFeed(props: INewsFeedProps) {
     const [fetching, setFetching] = useState(false);
     const [searchText, setSearchText] = useState("");
     useEffect(() => {
+        fetchNewsfeed();
+    }, [searchText])
+    const fetchNewsfeed = () => {
         setFetching(true)
         fetchNews(searchText).then((res) => {
             setFetching(false)
             setNews(res)
         });
-    }, [searchText])
+    }
     const viewArticleDetails = (article: IArticle) => {
         props.navigation.navigate('Article Details', {
             article: article,
@@ -53,6 +56,7 @@ export function NewsFeed(props: INewsFeedProps) {
             refreshControl={<RefreshControl
                 colors={[COLORS.dark_blue]}
                 refreshing={fetching}
+                onRefresh={() => fetchNewsfeed()}
             />}
             ListHeaderComponent={renderSearch()}
             onEndReachedThreshold={2}

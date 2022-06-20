@@ -6,6 +6,16 @@ import { Tabs } from './src/screens/mainTabs';
 import { ArticleDetailsScreen } from './src/screens/ArticleDetailsScreen';
 import { Provider } from 'react-redux';
 import configureStore from './src/redux/store';
+import './src/localization';
+const linking = {
+  prefixes: ['newsfeedapp://'],
+  config: {
+    screens: {
+      'Tabs': 'home',
+      'Article Details': 'article/:acrticleIndex',
+    }
+  }
+};
 function App() {
   useEffect(() => EStyleSheet.build())
 
@@ -16,7 +26,7 @@ function App() {
   const store = configureStore();
   return (
     <Provider store={store}>
-      <NavigationContainer
+      <NavigationContainer linking={linking}
         ref={navigationRef}
         onReady={() => {
           routeNameRef.current = navigationRef.current.getCurrentRoute().name;
